@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.fragments.HomeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/ivHome"
+        android:layout_width="@dimen/image_weather_icon"
+        android:layout_height="@dimen/image_weather_icon"
+        android:layout_marginTop="104dp"
+        android:contentDescription="@string/content_description_weather_image_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.434"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTemparatureHome"
+        app:srcCompat="@android:drawable/btn_star_big_on" />
+
+    <Button
+        android:id="@+id/btnDetailsHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:text="@string/button_details"
+        app:layout_constraintEnd_toEndOf="@+id/ivHome"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintStart_toStartOf="@+id/ivHome"
+        app:layout_constraintTop_toBottomOf="@+id/ivHome" />
+
+    <TextView
+        android:id="@+id/tvdateHome"
+        style="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/date"
+        android:textSize="@dimen/title_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.191"
+        app:layout_constraintStart_toEndOf="@+id/tvTemparatureHome"
+        app:layout_constraintTop_toBottomOf="@+id/tvCityNameHome" />
+
+    <TextView
+        android:id="@+id/tvTemparatureHome"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/temperature"
+        android:textSize="@dimen/title_temperature"
+        app:layout_constraintEnd_toEndOf="@+id/tvCityNameHome"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="@+id/tvCityNameHome"
+        app:layout_constraintTop_toBottomOf="@+id/tvCityNameHome" />
+
+    <TextView
+        android:id="@+id/tvCityNameHome"
+        android:textSize="@dimen/title_city_name"
+        android:textStyle="bold"
+        android:text="@string/city_name"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toTopOf="@id/tvTemparatureHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.394"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+ />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

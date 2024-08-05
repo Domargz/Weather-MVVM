@@ -2,4 +2,23 @@
     <string name="app_name">WeatherMVVM</string>
     <string name="app_title">My Weather Is It</string>
     <string name="content_description_title">App title</string>
+
+    <!-- Bottom Action Bar -->
+    <string name="favorite_bottom_bar">Favorite</string>
+    <string name="home_bottom_bar">Home</string>
+    <string name="settings_bottom_bar">Settings</string>
+    <!-- Content Descriptor -->
+    <string name="content_description_favorite_bottom_bar">Favorite Option Button</string>
+    <string name="content_description_home_bottom_bar">Home Option Button</string>
+    <string name="content_description_settings_bottom_bar">Settings option Button</string>
+
+    <!-- UI strings -->
+    <string name="button_details">More Details…</string>
+    <string name="content_description_weather_image_icon">Icon of weather</string>
+    <!-- HomeFragment strings -->
+    <string name="city_name">City Name</string>
+    <string name="date">Monday</string>
+    <string name="temperature">45 c</string>
+
+
 </resources>

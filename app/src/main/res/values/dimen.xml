@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="image_weather_icon">100dp</dimen>
+
+    <!-- Fragments Dimensions -->
+    <dimen name="title_city_name">48sp</dimen>
+    <dimen name="title_date">22sp</dimen>
+    <dimen name="title_temperature">32sp</dimen>
+
+
+
+
+</resources>

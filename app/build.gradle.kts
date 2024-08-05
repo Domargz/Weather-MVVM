@@ -44,6 +44,10 @@ dependencies {
     // Material 3
     implementation(libs.material)
 
+    // Fragment
+    implementation(libs.androidx.fragment.ktx)
+
+
 
 
     implementation(libs.androidx.core.ktx)
