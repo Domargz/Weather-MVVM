@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WeatherMVVM</string>
+    <string name="app_title">My Weather Is It</string>
+    <string name="content_description_title">App title</string>
+</resources>
