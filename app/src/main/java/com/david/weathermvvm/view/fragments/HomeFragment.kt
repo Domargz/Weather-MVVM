@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.david.weathermvvm.R
+import com.david.weathermvvm.databinding.FragmentHomeBinding
+import com.david.weathermvvm.viewmodel.WeatherViewModel
 
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private val sharedViewModel: WeatherViewModel by activityViewModels()
+    private lateinit var binding: FragmentHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +24,16 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        binding = FragmentHomeBinding.bind(view.rootView)
+        sharedViewModel.uiState.observe(viewLifecycleOwner) {
+            binding.tvCityNameHome.text = sharedViewModel.uiState.value?.location?.name
+            binding.tvTemparatureHome.text =
+                sharedViewModel.uiState.value?.current?.temp_c.toString()
+            binding.tvdateHome.text = sharedViewModel.uiState.value?.location?.localtime
+        }
+        return view
     }
 
 
