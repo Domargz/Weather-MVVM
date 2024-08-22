@@ -7,6 +7,11 @@
     <dimen name="title_date">22sp</dimen>
     <dimen name="title_temperature">32sp</dimen>
 
+    <!-- Recycler Dimensions -->
+    <dimen name="item_margin_end">10dp</dimen>
+    <dimen name="item_image_size">30dp</dimen>
+    <dimen name="item_margin_top">5dp</dimen>"
+
 
 
 

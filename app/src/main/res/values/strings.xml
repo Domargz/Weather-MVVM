@@ -11,6 +11,8 @@
     <string name="content_description_favorite_bottom_bar">Favorite Option Button</string>
     <string name="content_description_home_bottom_bar">Home Option Button</string>
     <string name="content_description_settings_bottom_bar">Settings option Button</string>
+    <string name="content_description_search_bar">Search your favorite city</string>
+    <string name="content_description_image_icon">Icon for weather in favorite cities</string>
 
     <!-- UI strings -->
     <string name="button_details">More Details…</string>
@@ -19,6 +21,8 @@
     <string name="city_name">City Name</string>
     <string name="date">Monday</string>
     <string name="temperature">45 c</string>
+    <!-- Recycler View -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
