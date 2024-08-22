@@ -55,8 +55,10 @@ dependencies {
     implementation(libs.androidx.fragment.ktx)
 
     // Hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    val hilt_version = "2.51.1"
+    implementation("com.google.dagger:hilt-android:$hilt_version")
+    kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
+
 
     // Room
     val room_version = "2.6.1"
@@ -76,7 +78,9 @@ dependencies {
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.android)
     implementation(libs.ktor.client.content.negotiation)
-    implementation(libs.kotlinx.serialization.json)
+    //implementation(libs.kotlinx.serialization.json)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.1")
+
     implementation(libs.ktor.serialization.kotlinx.json)
 
     // Coroutines
