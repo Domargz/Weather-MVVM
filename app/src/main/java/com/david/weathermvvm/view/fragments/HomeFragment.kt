@@ -1,17 +1,17 @@
 package com.david.weathermvvm.view.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.david.weathermvvm.R
 import com.david.weathermvvm.databinding.FragmentHomeBinding
 import com.david.weathermvvm.viewmodel.WeatherViewModel
 
 class HomeFragment : Fragment() {
-    private val sharedViewModel: WeatherViewModel by activityViewModels()
+    private val weatherViewModel: WeatherViewModel by viewModels()
     private lateinit var binding: FragmentHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,11 +27,11 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         binding = FragmentHomeBinding.bind(view.rootView)
-        sharedViewModel.uiState.observe(viewLifecycleOwner) {
-            binding.tvCityNameHome.text = sharedViewModel.uiState.value?.location?.name
+        weatherViewModel.uiState.observe(viewLifecycleOwner) {
+            binding.tvCityNameHome.text = weatherViewModel.uiState.value?.location?.name
             binding.tvTemparatureHome.text =
-                sharedViewModel.uiState.value?.current?.temp_c.toString()
-            binding.tvdateHome.text = sharedViewModel.uiState.value?.location?.localtime
+                weatherViewModel.uiState.value?.current?.temp_c.toString()
+            binding.tvdateHome.text = weatherViewModel.uiState.value?.location?.localtime
         }
         return view
     }
