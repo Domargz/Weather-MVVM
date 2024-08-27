@@ -1,4 +1,4 @@
-package com.david.weathermvvm.model.datasource.room
+package com.david.weathermvvm.model.datasource.db.room
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -7,15 +7,15 @@ import androidx.room.Query
 @Dao
 interface CitiesDao {
     @Query("SELECT * FROM cities")
-    fun getAll(): List<Cities>
+    suspend fun getAll(): List<Cities>
 
     @Query("SELECT * FROM cities WHERE cityName = :cityName")
-    fun getCity(cityName: String): Cities
+    suspend fun getCity(cityName: String): Cities
 
     @Insert
-    fun insert(cities: Cities)
+    suspend fun insert(cities: Cities)
 
     @Query("DELETE FROM cities WHERE cityName = :cityName")
-    fun deleteAll(cityName: String)
+    suspend fun delete(cityName: String)
 
 }

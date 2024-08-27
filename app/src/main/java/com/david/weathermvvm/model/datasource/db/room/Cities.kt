@@ -1,4 +1,4 @@
-package com.david.weathermvvm.model.datasource.room
+package com.david.weathermvvm.model.datasource.db.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

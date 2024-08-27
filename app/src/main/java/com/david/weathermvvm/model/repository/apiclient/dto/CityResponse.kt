@@ -4,6 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CityResponse(
-    val current: Current,
-    val location: Location
+    val current: Current? = null,
+    val location: Location? = null,
+    val error: Error? = null
 )
