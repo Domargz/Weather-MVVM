@@ -3,23 +3,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.fragments.FavoriteFragment">
+    tools:context=".view.fragments.FavoriteFragment"
+    >
 
-    <com.google.android.material.search.SearchBar
-        android:id="@+id/sbFavoriteCity"
-        app:forceDefaultNavigationOnClickListener="true"
-        android:layout_marginTop="50dp"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
+
+    <EditText
+        android:id="@+id/etSearchCity"
+        android:layout_marginTop="70dp"
         android:layout_gravity="top|center"
-        android:hint="@string/content_description_search_bar"/>
-    
+        android:layout_width="300dp"
+        android:autofillHints=""
+        android:hint="@string/et_hint"
+        android:inputType="text"
+        android:drawableStart="@drawable/baseline_search_24"
+        android:layout_height="wrap_content"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFavoriteCity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
 
 
 </FrameLayout>
