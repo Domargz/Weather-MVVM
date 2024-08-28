@@ -13,6 +13,7 @@
     <string name="content_description_settings_bottom_bar">Settings option Button</string>
     <string name="content_description_search_bar">Search your favorite city</string>
     <string name="content_description_image_icon">Icon for weather in favorite cities</string>
+    <string name="content_description_delete_icon">Icon for delete favorite city</string>
 
     <!-- UI strings -->
     <string name="button_details">More Details…</string>
