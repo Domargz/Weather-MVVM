@@ -23,7 +23,7 @@ class ApiRepository @Inject constructor(): Request {
     }
 
     private val baseUrl = "http://api.weatherapi.com/v1/current.json"
-    private val API_KEY = "2421d2e913ca463baf5232059241907"
+    private val API_KEY = ""
 
      override suspend fun getWeather(city: String): Response = withContext(Dispatchers.IO) {
         val result =  client.get(baseUrl){
