@@ -1,43 +1,56 @@
 package com.david.weathermvvm.view
 
 import android.os.Bundle
-import androidx.activity.viewModels
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.commit
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.david.weathermvvm.R
 import com.david.weathermvvm.databinding.ActivityMainBinding
-import com.david.weathermvvm.view.fragments.FavoriteFragment
-import com.david.weathermvvm.viewmodel.WeatherViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val weatherViewModel: WeatherViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        lifecycleScope.launch {
-            weatherViewModel.getWeather("Mexicali")
-        }
-        binding.bottomNavigation.setOnClickListener{ view ->
-            when(view.id){
-                R.id.favorite_bottom_bar -> {
-                    supportFragmentManager.commit {
-                        replace(R.id.fcvContainer, FavoriteFragment())
-                        setReorderingAllowed(true)
-                        addToBackStack("FavoriteFragment")
-                    }
-                }
+        val topBar = binding.topAppBar
+        setSupportActionBar(topBar)
+        val navView = binding.btmNavigation
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.favorite_bottom_bar,
+                R.id.home_bottom_bar
+            )
+        )
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
+        val navController = navHostFragment.navController
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.details_fragment) {
+                navView.visibility = View.GONE
+            } else {
+                navView.visibility = View.VISIBLE
             }
         }
+
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.fragmentContainer)
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
