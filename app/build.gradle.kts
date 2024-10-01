@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -19,6 +21,16 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunner = "com.david.weathermvvm.HiltTestRunner"
+
+        android.buildFeatures.buildConfig = true
+
+
+        val properties =  Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
+
+        // Set API keys in BuildConfig
+        buildConfigField("String", "API_KEY", "\"${properties.getProperty("API_KEY")}\"")
+
     }
 
     buildTypes {
@@ -49,12 +61,41 @@ kapt {
 
 dependencies {
 
+    testImplementation(libs.junit.junit)
+    // Navigation
+    var nav_version = "2.8.0"
+
+        // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
+        // Views/Fragments Integration
+    implementation("androidx.navigation:navigation-fragment:$nav_version")
+    implementation("androidx.navigation:navigation-ui:$nav_version")
+
+        // Feature module support for Fragments
+    // implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+
+        // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:$nav_version")
+
+
+
+    // Mockito
+    testImplementation("org.mockito:mockito-core:5.2.1")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+
     // Material 3
     implementation(libs.material)
 
     // Fragment
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.android)
+    testImplementation(libs.junit.junit)
+    // Fragment Test
+    val fragment_version = "1.8.3"
+    debugImplementation("androidx.fragment:fragment-testing-manifest:$fragment_version")
+    androidTestImplementation("androidx.fragment:fragment-testing:$fragment_version")
+
 
     // Hilt
     val hilt_version = "2.51.1"
@@ -97,10 +138,6 @@ dependencies {
     val coroutines_version = "1.6.4"
     androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version")
     testImplementation( "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version")
-
-
-
-
 
 
     implementation(libs.androidx.core.ktx)

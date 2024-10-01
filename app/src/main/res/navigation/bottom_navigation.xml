@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@id/home_bottom_bar">
+
+    <fragment
+        android:id="@+id/favorite_bottom_bar"
+        android:name="com.david.weathermvvm.view.fragments.FavoriteFragment"
+        android:label="@string/name_fragment_favorite"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_navigation_favorite_to_details_fragment"
+            app:destination="@id/details_fragment"
+            app:enterAnim="@anim/enter_details"
+            app:exitAnim="@anim/exit_detail"
+            app:popEnterAnim="@anim/enter_details"
+            app:popExitAnim="@anim/exit_detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/home_bottom_bar"
+        android:name="com.david.weathermvvm.view.fragments.HomeFragment"
+        android:label="@string/home_bottom_bar"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_details_fragment"
+            app:destination="@id/details_fragment"
+            app:enterAnim="@anim/enter_details"
+            app:exitAnim="@anim/exit_detail"
+            app:popEnterAnim="@anim/enter_details"
+            app:popExitAnim="@anim/exit_detail" />
+    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/settings_bottom_bar"-->
+<!--        android:name="com.david.weathermvvm.view.fragments.SettingsFragment"-->
+<!--        android:label="@string/settings_bottom_bar"-->
+<!--        tools:layout="@layout/fragment_settings" >-->
+
+<!--    </fragment>-->
+
+    <fragment
+        android:id="@+id/details_fragment"
+        android:name="com.david.weathermvvm.view.fragments.DetailsFragment"
+        android:label="@string/name_fragment_details"
+        tools:layout="@layout/fragment_details"
+        >
+
+    </fragment>
+
+</navigation>
