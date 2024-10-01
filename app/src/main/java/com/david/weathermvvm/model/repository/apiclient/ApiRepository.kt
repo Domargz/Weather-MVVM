@@ -1,5 +1,6 @@
 package com.david.weathermvvm.model.repository.apiclient
 
+import com.david.weathermvvm.BuildConfig
 import com.david.weathermvvm.model.repository.apiclient.dto.CityResponse
 import com.david.weathermvvm.model.repository.apiclient.dto.Response
 import io.ktor.client.HttpClient
@@ -23,31 +24,40 @@ class ApiRepository @Inject constructor(): Request {
     }
 
     private val baseUrl = "http://api.weatherapi.com/v1/current.json"
-    private val API_KEY = ""
+    private val API_KEY = BuildConfig.API_KEY
 
-     override suspend fun getWeather(city: String): Response = withContext(Dispatchers.IO) {
-        val result =  client.get(baseUrl){
-            parameter("key", API_KEY)
-            parameter("q", city)
-        }
 
-         return@withContext processWeatherResponse(result)
+    override suspend fun getWeather(city: String): Response = withContext(Dispatchers.IO) {
+        return@withContext handleRequest(city)
     }
 
-     override suspend fun getWeather(lat: Double, lon: Double): Response = withContext(Dispatchers.IO) {
-        val result =  client.get(baseUrl){
-            parameter("key", API_KEY)
-            parameter("q", "$lat,$lon")
-        }
-         return@withContext processWeatherResponse(result)
-    }
+    override suspend fun getWeather(lat: Double, lon: Double): Response =
+        withContext(Dispatchers.IO) {
 
-    private suspend fun processWeatherResponse(result: HttpResponse): Response {
+            return@withContext handleRequest("$lat,$lon")
+        }
+
+    private suspend fun createResponse(result: HttpResponse): Response {
         val city = result.body<CityResponse>()
         return if (city.error == null) {
             Response.Success(city)
         } else {
-            Response.Failure(city.error?.message)
+            Response.Failure(city.error.message)
+        }
+    }
+
+    private suspend fun handleRequest(city: String): Response {
+        try {
+            val result = client.get(baseUrl) {
+                parameter("key", API_KEY)
+                parameter("q", city)
+            }
+            val response = createResponse(result)
+            return response
+        } catch (e: Exception) {
+            return Response.Failure(e.message)
         }
     }
 }
+
+
