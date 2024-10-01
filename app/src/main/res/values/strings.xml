@@ -27,5 +27,12 @@
     <!-- EditText View -->
     <string name="et_hint">Search yoor favorite city</string>
 
+    <!--  Navigation  -->
+    <string name="name_fragment_details">Details</string>
+    <string name="name_fragment_favorite">Favorite Cities</string>
+    <string name="name_fragment_settings">Settings</string>
+
+    <!-- Error API -->
+    <string name="city_error">ERROR!! %1$s</string>
 
 </resources>
