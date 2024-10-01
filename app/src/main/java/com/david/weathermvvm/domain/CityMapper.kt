@@ -12,7 +12,8 @@ class CityMapper @Inject constructor() : Mapper<CityResponse, Cities> {
             lon = from.location.lon ,
             tempc = from.current!!.temp_c ,
             tempf = from.current.temp_f,
-            icon = from.current.condition.icon
+            icon = from.current.condition.icon,
+            defaultCity = false
         )
     }
 }

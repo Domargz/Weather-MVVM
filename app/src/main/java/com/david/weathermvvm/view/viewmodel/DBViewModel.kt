@@ -19,9 +19,6 @@ class DBViewModel @Inject constructor(private val repoDB: DataBaseRepository): V
 
     var cities: LiveData<List<Cities>> = getAll()
 
-    init {
-        getAll()
-    }
 
     private fun getAll(): LiveData<List<Cities>> =
          repoDB.getAll().asLiveData()

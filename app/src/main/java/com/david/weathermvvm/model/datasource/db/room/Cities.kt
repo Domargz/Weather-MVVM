@@ -11,5 +11,6 @@ data class Cities(
     val lon: Double,
     val tempc: Double,
     val tempf: Double,
-    val icon: String
+    val icon: String,
+    val defaultCity: Boolean
 )
